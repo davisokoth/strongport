@@ -1,0 +1,16 @@
+body {
+ padding-top:50px;
+}
+.glyphicon-remove:hover {
+ cursor:pointer;
+}
+.grid {
+  width: 800px;
+  height: 400px;
+}
+.trOdd {
+    background-color:#FFFFFF;
+}
+.trEven {
+    background-color:#F0F0F0;
+}
