@@ -1,0 +1,165 @@
+module.exports = function(Partner) {
+	Partner.customerAging = function (cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging()";
+        var sql2 = "SELECT cust_name, cust_code, sum(openamt),  sum(pastdue61_90), sum(pastdue31_60), sum(pastdue1_30), sum(due0_30) "
+        	+ "FROM WS_Aging WHERE createdby = 100 " 
+        	+ "GROUP BY cust_name, cust_code "
+        	+ "ORDER BY cust_name LIMIT 20";
+
+        ds.connector.execute(sql, function (err, aging) {
+
+            if (err) console.error(err);
+
+            ds.connector.execute(sql2, function(err2, aging){
+            	if(err2) console.error(err2);
+
+            	cb(err, aging);
+            });
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'customerAging',
+        {
+            // description: 'Get list of users by client',
+            // accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/customerAging' }
+        }
+    );
+
+    Partner.getZeroDays = function (cBPartnerId, cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging( " + cBPartnerId + ", now()::timestamp with time zone, 'ZERO'::character varying, 'Y'::character, 1000000) as zero";
+
+        ds.connector.execute(sql, function (err, partners) {
+
+            if (err) console.error(err);
+
+            cb(err, partners);
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'getZeroDays',
+        {
+            // description: 'Get list of users by client',
+            accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/getZeroDays' }
+        }
+    );
+
+    Partner.getThirtyDays = function (cBPartnerId, cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging( " + cBPartnerId + ", now()::timestamp with time zone, 'THIRTY'::character varying, 'Y'::character, 1000000) as thirty";
+
+        ds.connector.execute(sql, function (err, partners) {
+
+            if (err) console.error(err);
+
+            cb(err, partners);
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'getThirtyDays',
+        {
+            // description: 'Get list of users by client',
+            accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/getThirtyDays' }
+        }
+    );
+
+    Partner.getSixtyDays = function (cBPartnerId, cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging( " + cBPartnerId + ", now()::timestamp with time zone, 'SIXTY'::character varying, 'Y'::character, 1000000) as sixty";
+
+        ds.connector.execute(sql, function (err, partners) {
+
+            if (err) console.error(err);
+
+            cb(err, partners);
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'getSixtyDays',
+        {
+            // description: 'Get list of users by client',
+            accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/getSixtyDays' }
+        }
+    );
+
+    Partner.getNinetyDays = function (cBPartnerId, cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging( " + cBPartnerId + ", now()::timestamp with time zone, 'NINETY'::character varying, 'Y'::character, 1000000) as ninety";
+
+        ds.connector.execute(sql, function (err, partners) {
+
+            if (err) console.error(err);
+
+            cb(err, partners);
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'getNinetyDays',
+        {
+            // description: 'Get list of users by client',
+            accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/getNinetyDays' }
+        }
+    );
+
+    Partner.getOpeningBal = function (cBPartnerId, cb) {
+
+        var ds = Partner.dataSource;
+        // var c_bpartner_id = cBPartnerId;
+        var sql = "SELECT invoiceaging( " + cBPartnerId + ", now()::timestamp with time zone, 'OPENINGBALANCE'::character varying, 'Y'::character, 1000000) as openingbal";
+
+        ds.connector.execute(sql, function (err, partners) {
+
+            if (err) console.error(err);
+
+            cb(err, partners);
+
+        });
+
+    };
+
+    Partner.remoteMethod(
+        'getOpeningBal',
+        {
+            // description: 'Get list of users by client',
+            accepts: [{ arg: 'cBPartnerId', type: 'string', http: { source: 'query' } }],
+            returns: { arg: 'data', type: ['Partner'], root: true },
+            http: { verb: 'get', path: '/getOpeningBal' }
+        }
+    );
+};

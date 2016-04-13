@@ -1,0 +1,42 @@
+{
+  "name": "county",
+  "plural": "counties",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "idInjection": false,
+    "postgresql": {
+      "schema": "adempiere",
+      "table": "atl_county"
+    }
+  },
+  "properties": {
+    "atl_county_id": {
+      "type": "number",
+      "id":true,
+      "generated":true,
+      "required": true
+    },
+    "ad_org_id": {
+      "type": "number",
+      "required": true
+    },
+    "ad_client_id": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "isactive": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

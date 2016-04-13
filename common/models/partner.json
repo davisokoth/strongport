@@ -1,0 +1,56 @@
+{
+  "name": "partner",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "idInjection": false,
+    "postgresql": {
+      "schema": "adempiere",
+      "table": "c_bpartner"
+    }
+  },
+  "properties": {
+    "c_bpartner_id": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "id": false,
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "ad_org_id": {
+      "type": "number",
+      "required": true
+    },
+    "ad_client_id": {
+      "type": "number",
+      "required": true
+    },
+    "isactive": {
+      "type": "string",
+      "required": true
+    },
+    "c_bp_group_id": {
+      "type": "number",
+      "required": true
+    },
+    "iscustomer": {
+      "type": "string"
+    },
+    "isemployee": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

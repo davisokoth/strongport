@@ -1,0 +1,60 @@
+{
+  "name": "sysuser",
+  "plural": "sysusers",
+  "base": "User",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "idInjection": false,
+    "postgresql": {
+      "schema": "adempiere",
+      "table": "ad_user"
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "ad_user_id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "required": true
+    },
+    "ad_client_id": {
+      "type": "number",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": false
+    },
+    "c_bpartner_id": {
+      "type": "number"
+    },
+    "ad_org_id": {
+      "type": "number",
+      "required": true
+    },
+    "createdby": {
+      "type": "number",
+      "required": true
+    },
+    "updatedby": {
+      "type": "number",
+      "required": true
+    },
+    "emailuserpw": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

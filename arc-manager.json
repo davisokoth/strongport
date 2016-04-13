@@ -1,0 +1,12 @@
+{
+  "ids": {
+    "ManagerHost": 5,
+    "LoadBalancer": 1
+  },
+  "models": {
+    "ManagerHost": {
+      "5eeec4e9-18b4-4121-aa30-8c67421316e4": "{\"id\":\"5eeec4e9-18b4-4121-aa30-8c67421316e4\",\"host\":\"192.168.100.35\",\"port\":8701,\"actions\":[\"delete\",\"edit\"],\"protocol\":\"http\",\"created\":1452753707800,\"error\":{\"message\":\"connect EHOSTUNREACH\"},\"errorType\":\"unknown\",\"app\":null,\"processes\":null}"
+    },
+    "LoadBalancer": {}
+  }
+}

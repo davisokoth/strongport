@@ -1,0 +1,41 @@
+{
+  "name": "stock",
+  "plural": "stocks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "m_product_id": {
+      "type": "number",
+      "id": true,
+      "generated": false,
+      "required": true
+    },
+    "ad_org_id": {
+      "type": "number",
+      "required": true
+    },
+    "ad_client_id": {
+      "type": "number",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "qtyonhand": {
+      "type": "number",
+      "required": true
+    },
+    "qtyavailable": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

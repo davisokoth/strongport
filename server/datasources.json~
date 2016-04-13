@@ -1,0 +1,37 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "kemsa": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "kemsa",
+    "username": "adempiere",
+    "password": "adempiere",
+    "name": "kemsa",
+    "debug": true,
+    "connector": "postgresql",
+    "user": "adempiere"
+  },
+  "kemsawms": {
+    "host": "localhost",
+    "port": "5432",
+    "database": "wms",
+    "username": "adempiere",
+    "password": "adempiere",
+    "name": "kemsawms",
+    "debug": true,
+    "connector": "postgresql"
+  },
+  "kecobo": {
+    "host": "192.168.43.27\\CQLSERVER",
+    "port": 1433,
+    "url": "",
+    "database": "AUTOREXTENG",
+    "password": "super@12345",
+    "name": "kecobo",
+    "user": "super",
+    "connector": "mssql"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "sysuser": {
+    "dataSource": "kemsa",
+    "public": true
+  },
+  "county": {
+    "dataSource": "kemsa",
+    "public": true
+  },
+  "reportHeader": {
+    "dataSource": "kemsa",
+    "public": true
+  },
+  "stock": {
+    "dataSource": "kemsawms",
+    "public": true
+  },
+  "partner": {
+    "dataSource": "kemsa",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  }
+}

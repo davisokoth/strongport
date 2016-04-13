@@ -1,0 +1,27 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "kemsa": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "kemsa",
+    "username": "adempiere",
+    "password": "adempiere",
+    "name": "kemsa",
+    "debug": true,
+    "connector": "postgresql",
+    "user": "adempiere"
+  },
+  "kemsawms": {
+    "host": "localhost",
+    "port": "5432",
+    "database": "wms",
+    "username": "adempiere",
+    "password": "adempiere",
+    "name": "kemsawms",
+    "debug": true,
+    "connector": "postgresql"
+  }
+}
