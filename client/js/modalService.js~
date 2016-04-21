@@ -1,4 +1,4 @@
-angular.module('yourModuleName').service('modalService', ['$modal',
+angular.module('myModule').service('modalService', ['$modal',
     function ($modal) {
 
         var modalDefaults = {

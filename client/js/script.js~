@@ -1,26 +1,12 @@
-var app = angular.module('myModule', ['ngRoute', 'ngResource', 'ngTouch', 'lbServices', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter']);
-var modalOptions = {
-     closeButtonText: 'Cancel',
-     actionButtonText: 'Delete Customer',
-     headerText: 'Delete ?',
-     bodyText: 'Are you sure you want to delete this customer?'
-  };
-
-function getReportHeaders($scope, ReportHeader){
-    ReportHeader.getNames(
-        { filter : { where: { reportHeaderId : 1000001 } } },
-        function(result){
-            return result;
-        }
-    );
-}
+var app = angular.module('myModule', ['ngRoute', 'ngResource', 'ngTouch', 'lbServices', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
   $routeProvider
 
     // route for the home page
-    .when('/reports', {
-        controller : 'reportHeader'
+    .when('/customeraging', {
+        templateUrl : 'views/agingView.html',
+        controller : 'ReportController'
     })
 
     // route for the about page
@@ -34,70 +20,46 @@ app.config(function($routeProvider) {
     });
 });
 
-app.constant('ENDPOINT_URI', 'http://localhost:3000/api/');
+app.directive('ngConfirm', ['$uibModal', function ($uibModal) {
+        return {
+            restrict: 'A',
+            scope: {
+                ngConfirmMessage: '@',
+                ngConfirm: '&'
+            },
+            link: function (scope, element) {
+                element.bind('click', function () {
+                    var modalInstance = $uibModal.open({
+                        templateUrl: 'app/partials/modals.html',
+                        size: 'sm',
+                        windowClass: 'confirm-window',
+                        resolve: {
+                            confirmClick: function () {
+                                return scope.ngConfirm;
+                            },
+                            confirmMessge: function () {
+                                return scope.ngConfirmMessage;
+                            }
+                        }
+                    });
+                });
+            }
+        }
+    }])
+        .controller('ModalConfirmCtrl', ['$scope', '$uibModalInstance', 'confirmClick', 'confirmMessge',
+            function ($scope, $uibModalInstance, confirmClick, confirmMessge) {
+                $scope.confirmMessage = confirmMessge;
+                function closeModal() {
+                    $uibModalInstance.dismiss('cancel');
+                }
 
-angular.module('myApp', ['lbServices']);
+                $scope.ok = function () {
+                    confirmClick();
+                    closeModal();
+                }
 
-      function TestController($scope, Breakfast) {
-        $scope.allBreakfastSpots = Breakfast.find();
-      }
+                $scope.cancel = function () {
+                    closeModal();
+                }
+            }]);
 
-app.controller('reportHeader', ['$scope', '$http', function ($scope, ReportHeader, Partner, $http) {
-  $scope.loading = true;
-  angular.element('#loader').show()
-  $scope.gridOptions = {
-    showGridFooter: true,
-    showColumnFooter: true,
-    enableFiltering: true,
-    paginationPageSizes: [50, 50, 75],
-    paginationPageSize: 50,
-    enableGridMenu: true,
-    enableSelectAll: true,
-    exporterCsvFilename: 'myFile.csv',
-    exporterPdfDefaultStyle: {fontSize: 9},
-    exporterPdfTableStyle: {margin: [30, 30, 30, 30]},
-    exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
-    exporterPdfHeader: { text: "My Header", style: 'headerStyle' },
-    exporterPdfFooter: function ( currentPage, pageCount ) {
-      return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
-    },
-    exporterPdfCustomFormatter: function ( docDefinition ) {
-      docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-      docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
-      return docDefinition;
-    },
-    exporterPdfOrientation: 'portrait',
-    exporterPdfPageSize: 'LETTER',
-    exporterPdfMaxGridWidth: 500,
-    exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
-    onRegisterApi: function(gridApi){
-      $scope.gridApi = gridApi;
-    }
-  };
-
-  $scope.header = getReportHeaders();
-  /**
-  $scope.aging = Partner.customerAging(null,
-    function(data){
-      // var myData =  $.parseJSON(JSON.parse(data));
-      $scope.gridOptions.data  =  angular.fromJson(data);
-      //$scope.gridOptions.data = data;
-      angular.element('#loader').hide();
-    },
-    function() {
-      $scope.loading = false;
-      angular.element('#loader').hide();
-      alert("Error retrieving data.");
-    }
-  );
-  **/
-
-    /**
-    modalService.showModal({}, modalOptions).then(function (result) {
-         dataService.deleteCustomer($scope.customer.id).then(function () {
-             $location.path('/customers');
-         }, processError);
-    });
-    **/
- 
-}]);

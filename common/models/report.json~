@@ -1,0 +1,54 @@
+{
+  "name": "report",
+  "plural": "reports",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "idInjection": false,
+    "postgresql": {
+      "schema": "adempiere",
+      "table": "node_report"
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "dataurl": {
+      "type": "string",
+      "required": false
+    },
+    "node_report_id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "required": true
+    },
+    "ad_client_id": {
+      "type": "number",
+      "required": true
+    },
+    "ad_org_id": {
+      "type": "number",
+      "required": true
+    },
+    "createdby": {
+      "type": "number",
+      "required": true
+    },
+    "updatedby": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

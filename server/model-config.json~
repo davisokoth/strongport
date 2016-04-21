@@ -54,17 +54,5 @@
     "public": true,
     "$promise": {},
     "$resolved": true
-  },
-  "applicant": {
-    "dataSource": "kecobo",
-    "public": true
-  },
-  "newModel": {
-    "dataSource": "db",
-    "public": true
-  },
-  "Applicant": {
-    "dataSource": "kecobo",
-    "public": true
   }
 }

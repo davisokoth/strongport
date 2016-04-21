@@ -1,0 +1,11 @@
+<!-- Left column -->
+<a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+<hr>
+<ul class="nav nav-stacked navbar">
+    <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2"> Reports <i class="glyphicon glyphicon-chevron-right"></i></a>
+        <ul class="nav nav-stacked collapse" id="menu2" ng-controller ="ReportListController">
+            <li ng-repeat="report in reports"><a href="#/{{report.dataurl}}" ng-click="open(report)">{{report.name}}</a></li>
+        </ul>
+    </li>
+</ul>
+<hr>

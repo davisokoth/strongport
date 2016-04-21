@@ -4,7 +4,7 @@ module.exports = function(Partner) {
         var ds = Partner.dataSource;
         // var c_bpartner_id = cBPartnerId;
         var sql = "SELECT invoiceaging()";
-        var sql2 = "SELECT cust_name, cust_code, sum(openamt) as openamt, sum(pastdue61_90) as pastdue61_90, "
+        var sql2 = "SELECT cust_name, cust_code, sum(openamt) as openamt,  sum(pastdue61_90) as pastdue61_90, "
                 + "sum(pastdue31_60) as pastdue31_60, sum(pastdue1_30) as openval, sum(due0_30) as due0_30, sum(pastdue91_plus) as pastdue91_plus "
         	+ "FROM WS_Aging WHERE createdby = 100 " 
         	+ "GROUP BY cust_name, cust_code "

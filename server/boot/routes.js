@@ -8,7 +8,10 @@ module.exports = function(app) {
     res.render('verified');
   });
 
-  
+  // Install a "/ping" route that returns "pong"
+  app.get('/ping', function(req, res) {
+    res.send('pong');
+  });
 
   
 };

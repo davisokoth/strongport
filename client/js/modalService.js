@@ -1,5 +1,5 @@
-angular.module('myModule').service('modalService', ['$modal',
-    function ($modal) {
+angular.module('myModule').service('modalService', ['$uibModal',
+    function ($uibModal) {
 
         var modalDefaults = {
             backdrop: true,

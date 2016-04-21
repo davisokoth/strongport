@@ -8,20 +8,7 @@ module.exports = function(app) {
     res.render('verified');
   });
 
-  //log a user in
-  app.post('/login', function(req, res) {
-    User.login({
-      name: req.body.name,
-      password: req.body.password
-    }, 'user', function(err, token) {
-      if (err) {
-        console.log('Error...');
-        return;
-      }
-
-      console.log('Trying...');
-    });
-  });
+  
 
   
 };

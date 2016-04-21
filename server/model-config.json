@@ -45,6 +45,10 @@
     "dataSource": "kemsa",
     "public": true
   },
+  "report": {
+    "dataSource": "kemsa",
+    "public": true
+  },
   "stock": {
     "dataSource": "kemsawms",
     "public": true

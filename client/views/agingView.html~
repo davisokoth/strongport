@@ -1,0 +1,3 @@
+<div ng-controller="ReportController"> 
+   <div ui-grid="gridOptions" ui-grid-selection ui-grid-exporter class="grid"></div>
+</div>

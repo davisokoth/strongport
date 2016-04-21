@@ -12,17 +12,10 @@
       }
     }
   },
-  "session": {
-  },
-  "auth": {
-  },
-  "parse": {
-  },
-  "routes": {
-    "loopback#rest": {
-      "paths": ["${restApiRoot}"]
-    }
-  },
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes": {},
   "files": {
     "loopback#static": {
       "params": "$!../client"
